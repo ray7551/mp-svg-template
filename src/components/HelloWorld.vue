@@ -94,11 +94,11 @@ export default {
       textSize: 70,
       fillColor: "#000000",
       opacity: 0.2,
-      width: 960,
-      height: 518,
+      width: 600,
+      height: 200,
       isInitial: true,
       copySuccess: false,
-      imgSrc: "https://img3.doubanio.com/view/photo/l/public/p2103193433.webp",
+      imgSrc: "https://dummyimage.com/600x200/ffffff/0011ff.png",
       href:
         "http://mp.weixin.qq.com/s?__biz=MjM5MTE0MzUyMQ==&amp;mid=2651618824&idx=1&sn=1c50da3dcab75517c486a978adfff037&chksm=bd42dd068a355410296603cbaa8788e9bad1387e3a2f8eb61e43b1a94458048457cc546b7204&scene=21#wechat_redirect"
     };

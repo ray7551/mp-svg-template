@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img width="5%" src="./assets/logo.png">
     <HelloWorld/>
   </div>
 </template>
