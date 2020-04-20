@@ -75,7 +75,7 @@
           <input type="number" v-model="height" placeholder="picture height">
         </label>
         <label>
-          <button type="button" @click="toClipBoard">复制代码到剪贴板</button>
+          <button type="button" @click="toClipBoard($event)">复制代码到剪贴板</button>
           <br>
           <span v-if="copySuccess">复制成功，可以粘贴到公众号编辑器了</span>
         </label>
@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import clip from "../utils/clipboard.js";
 export default {
   name: "HelloWorld",
   props: {},
@@ -130,10 +131,18 @@ export default {
         image.src = url;
       }
     },
-    toClipBoard() {
+    toClipBoard(evt) {
       console.log(this.$refs.svg.outerHTML);
-      // copyToClipboard(this.$refs.svg.outerHTML);
-      this.copySuccess = true;
+      clip(
+        this.$refs.svg.outerHTML,
+        evt,
+        () => {
+          this.copySuccess = true;
+        },
+        () => {
+          this.copySuccess = false;
+        }
+      );
     },
     downloadSVG() {
       const svgData = this.$refs.svg.outerHTML;
