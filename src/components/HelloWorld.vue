@@ -98,7 +98,7 @@ export default {
       height: 200,
       isInitial: true,
       copySuccess: false,
-      imgSrc: "https://dummyimage.com/600x200/ffffff/0011ff.png",
+      imgSrc: "https://dummyimage.com/600x200/ffffff/000000.png&text=++",
       href:
         "http://mp.weixin.qq.com/s?__biz=MjM5MTE0MzUyMQ==&amp;mid=2651618824&idx=1&sn=1c50da3dcab75517c486a978adfff037&chksm=bd42dd068a355410296603cbaa8788e9bad1387e3a2f8eb61e43b1a94458048457cc546b7204&scene=21#wechat_redirect"
     };
