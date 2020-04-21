@@ -74,14 +74,12 @@
           图片高度
           <input type="number" v-model="height" placeholder="picture height">
         </label>
-        <label v-if="!isInitial">
-          <button type="button" @click="toClipBoard($event)">复制代码到剪贴板</button>
-          <br>
-          <span v-if="copySuccess">复制成功，可以粘贴到公众号编辑器了</span>
-        </label>
-        <label v-if="!isInitial">
+        <label v-if="!isInitial && isRendered">
           生成代码：
           <textarea v-model="fullHtml" cols="100%" rows="16"></textarea>
+          <br>
+          <span v-if="copySuccess">复制成功，可以粘贴到公众号编辑器了</span>
+          <button type="button" @click="toClipBoard($event)">复制代码到剪贴板</button>
         </label>
       </fieldset>
     </form>
@@ -102,6 +100,7 @@ export default {
       width: 600,
       height: 200,
       isInitial: true,
+      isRendered: false,
       fullHtml: "",
       copySuccess: false,
       imgSrc: "https://dummyimage.com/600x200/ffffff/000000.png&text=++",
@@ -111,6 +110,7 @@ export default {
   },
   methods: {
     onFileSelect(evt) {
+      this.isRendered = false;
       this.isInitial = false;
       this.copySuccess = false;
       const files = evt.target.files; // FileList object
@@ -122,6 +122,7 @@ export default {
         this.imgSrc = dataURL;
         this.$nextTick(() => {
           this.fullHtml = this.$refs.svg.outerHTML;
+          this.isRendered = true;
         });
       });
 
