@@ -74,10 +74,14 @@
           图片高度
           <input type="number" v-model="height" placeholder="picture height">
         </label>
-        <label>
+        <label v-if="!isInitial">
           <button type="button" @click="toClipBoard($event)">复制代码到剪贴板</button>
           <br>
           <span v-if="copySuccess">复制成功，可以粘贴到公众号编辑器了</span>
+        </label>
+        <label v-if="!isInitial">
+          生成代码：
+          <textarea v-model="fullHtml" cols="100%" rows="16"></textarea>
         </label>
       </fieldset>
     </form>
@@ -98,6 +102,7 @@ export default {
       width: 600,
       height: 200,
       isInitial: true,
+      fullHtml: "",
       copySuccess: false,
       imgSrc: "https://dummyimage.com/600x200/ffffff/000000.png&text=++",
       href:
@@ -115,6 +120,9 @@ export default {
         this.width = img.width;
         this.height = img.height;
         this.imgSrc = dataURL;
+        this.$nextTick(() => {
+          this.fullHtml = this.$refs.svg.outerHTML;
+        });
       });
 
       function getDataUri(url, callback) {
@@ -133,6 +141,7 @@ export default {
     },
     toClipBoard(evt) {
       console.log(this.$refs.svg.outerHTML);
+      this.fullHtml = this.$refs.svg.outerHTML;
       clip(
         this.$refs.svg.outerHTML,
         evt,
