@@ -1,16 +1,16 @@
 <template>
-  <div id="app">
-    <HelloWorld/>
+  <div id="app" class="admin-wrapper">
+    <Editor/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Editor from "./components/Editor";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    Editor
   }
 };
 </script>
